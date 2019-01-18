@@ -10,7 +10,7 @@ public class Event {
 
     @Override
     public String toString(){
-        return msg +" for user " + id + " on date " + df.format(date);
+        return msg +" for user with id: " + id + " on date " + df.format(date);
     }
 
     public void setMsg(String msg) {

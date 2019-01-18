@@ -11,15 +11,15 @@ public class App {
         logger = lg;
     }
     public App(){}
-    private void LogEvent(String message)
+    private void LogEvent(Event  ev)
     {
-        String msg = message.replaceAll(Integer.toString(User.getID()), User.getName());
-    logger.LogEvent(msg);
+        //String msg = message.replaceAll(Integer.toString(User.getID()), User.getName());
+    logger.LogEvent(ev);
     }
     public static void main(String[] args) {
         ApplicationContext cont = new ClassPathXmlApplicationContext("SprConfig.xml");
         App app = (App) cont.getBean("app");
-        app.LogEvent("Some event for user 1");
+        //app.LogEvent("Some event for user 1");
         System.out.println();
     }
 
