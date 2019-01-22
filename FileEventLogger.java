@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileEventLogger implements EventLogger {
-    String fileName;
-    File file;
+    private String fileName;
+    private File file;
 
     public void Init() throws IOException{
         this.file = new File(fileName);
@@ -15,6 +15,7 @@ public class FileEventLogger implements EventLogger {
         fileName = NameOfFile;
 
     }
+    FileEventLogger(){}
     public void LogEvent(Event ev){
         try{FileUtils.writeStringToFile(file,ev.toString(), true);}
         catch (IOException e){

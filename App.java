@@ -11,16 +11,22 @@ public class App {
         logger = lg;
     }
     public App(){}
-    private void LogEvent(Event  ev)
+    private void LogEvent(Event  event, String msg)
     {
-        //String msg = message.replaceAll(Integer.toString(User.getID()), User.getName());
-    logger.LogEvent(ev);
+        String message = msg.replaceAll(Integer.toString(User.getID()), User.getName());
+        event.setMsg(message);
+        logger.LogEvent(event);
     }
     public static void main(String[] args) {
         ApplicationContext cont = new ClassPathXmlApplicationContext("SprConfig.xml");
         App app = (App) cont.getBean("app");
-        //app.LogEvent("Some event for user 1");
-        System.out.println();
+
+        Event event = (Event) cont.getBean("event");//взятие бина по ИД
+        app.LogEvent(event,"Some event for user 1");
+
+        event = cont.getBean(Event.class);// взятие бина по имени класса
+        app.LogEvent(event, "Some event for user 2");
+        ((ClassPathXmlApplicationContext) cont).close();
     }
 
 }

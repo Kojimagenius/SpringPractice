@@ -1,11 +1,14 @@
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Event {
-    int id;
-    String msg;
-    Date date;
-    DateFormat df;
+    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
+    private int id;
+    private String msg;
+    private Date date;
+
+    private DateFormat df;
 
 
     @Override
@@ -22,5 +25,6 @@ public class Event {
     }
     public Event(Date date, DateFormat df){
         this.date = date; this.df = df;
+        this.id = AUTO_ID.getAndIncrement();
     }
 }
