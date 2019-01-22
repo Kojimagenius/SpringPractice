@@ -21,10 +21,10 @@ public class App {
         ApplicationContext cont = new ClassPathXmlApplicationContext("SprConfig.xml");
         App app = (App) cont.getBean("app");
 
-        Event event = cont.getBean(Event.class);
+        Event event = (Event) cont.getBean("event");//взятие бина по ИД
         app.LogEvent(event,"Some event for user 1");
 
-        event = cont.getBean(Event.class);
+        event = cont.getBean(Event.class);// взятие бина по имени класса
         app.LogEvent(event, "Some event for user 2");
         ((ClassPathXmlApplicationContext) cont).close();
     }
