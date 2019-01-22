@@ -11,6 +11,10 @@ public class FileEventLogger implements EventLogger {
         this.file = new File(fileName);
         file.canWrite();
     }
+    FileEventLogger(String NameOfFile){
+        fileName = NameOfFile;
+
+    }
     public void LogEvent(Event ev){
         try{FileUtils.writeStringToFile(file,ev.toString(), true);}
         catch (IOException e){
