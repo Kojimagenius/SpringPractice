@@ -22,10 +22,10 @@ public class App {
         App app = (App) cont.getBean("app");
 
         Event event = (Event) cont.getBean("event");//взятие бина по ИД
-        app.LogEvent(event,"Some event for user 1");
+        app.LogEvent(event,"Some event for user 1 \n");
 
         event = cont.getBean(Event.class);// взятие бина по имени класса
-        app.LogEvent(event, "Some event for user 2");
+        app.LogEvent(event, "Some event for user 2 \n");
         ((ClassPathXmlApplicationContext) cont).close();
     }
 

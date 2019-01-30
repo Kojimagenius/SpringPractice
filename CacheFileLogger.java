@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class CacheFileLogger extends FileEventLogger {
@@ -8,7 +9,7 @@ public class CacheFileLogger extends FileEventLogger {
     CacheFileLogger(String fileName, int cacheSize){
         super(fileName);
         this.cacheSize = cacheSize;
-        cache = null;
+        this.cache = new ArrayList<Event>(cacheSize);
     }
     public void LogEvent(Event ev) {
         cache.add(ev);
