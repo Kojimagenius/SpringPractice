@@ -1,3 +1,7 @@
+import Beans.Client;
+import Beans.Event;
+import Beans.EventType;
+import Loggers.EventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,7 +19,7 @@ public class App {
         this.loggers = loggers;
     }
     public App(){}
-    private void LogEvent(EventType eventType, Event  event, String msg)
+    private void LogEvent(EventType eventType, Event event, String msg)
     {
         String message = msg.replaceAll(Integer.toString(User.getID()), User.getName());
         event.setMsg(message);

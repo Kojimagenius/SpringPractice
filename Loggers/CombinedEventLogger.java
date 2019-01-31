@@ -1,3 +1,5 @@
+package Loggers;
+
 import java.util.Collection;
 
 public class CombinedEventLogger implements EventLogger {

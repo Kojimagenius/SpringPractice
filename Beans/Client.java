@@ -1,3 +1,5 @@
+package Beans;
+
 public class Client {
     int ID;
     String Name;
