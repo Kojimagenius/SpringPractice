@@ -12,7 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 import java.text.DateFormat;
 import java.util.Date;
 
-@SuppressWarnings("ALL")
 @Configuration
 @PropertySource("client.properties")
 public class SprConfig {

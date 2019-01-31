@@ -1,11 +1,11 @@
 package Config;
 
 import Beans.EventType;
-import Loggers.EventLogger;
 import Loggers.CacheFileLogger;
+import Loggers.EventLogger;
 
 
-
+import Loggers.FileEventLogger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 
-@SuppressWarnings("ALL")
+
 @Configuration
 public class LoggerConfig {
 
@@ -27,20 +27,20 @@ public class LoggerConfig {
         return new PropertySourcesPlaceholderConfigurer();
     }
     @Resource(name = "ConsoleEventLogger")
-    private EventLogger consoleEventLogger;
+    private EventLogger ConsoleEventLogger;
     @Resource(name = "FileEventLogger")
-    private  EventLogger fileEventLogger;
+    private  EventLogger FileEventLogger;
     @Resource(name = "CacheFileLogger")
     private EventLogger CacheLogger;
-    @Resource(name = "Loggers/CombinedEventLogger")
-    private EventLogger combinedEventLogger;
+    @Resource(name = "CombinedEventLogger")
+    private EventLogger CombinedEventLogger;
 
 
     @Bean
     public Collection<EventLogger> combinedLoggers(){
         Collection<EventLogger> loggers = new ArrayList<EventLogger>(2);
-        ((ArrayList<EventLogger>) loggers).add(consoleEventLogger);
-        loggers.add(fileEventLogger);
+        loggers.add(ConsoleEventLogger);
+        loggers.add(FileEventLogger);
         return loggers;
     }
 
@@ -48,8 +48,8 @@ public class LoggerConfig {
     @Bean
     public Map<EventType, EventLogger> loggerMap(){
         Map<EventType,EventLogger> map = new EnumMap<EventType, EventLogger>(EventType.class);
-        map.put(EventType.INFO, consoleEventLogger);
-        map.put(EventType.ERROR, combinedEventLogger);
+        map.put(EventType.INFO, ConsoleEventLogger);
+        map.put(EventType.ERROR, CombinedEventLogger);
         return map;
     }
 

@@ -12,10 +12,9 @@ import java.util.List;
 @Component
 public class CacheFileLogger extends FileEventLogger {
 
-    @Value("$cache.size:5")
+    @Value("${cache.size:5}")
     private int   cacheSize ;
     private List<Event> cache;
-
 
     CacheFileLogger(String fileName, int cacheSize){
         super(fileName);
