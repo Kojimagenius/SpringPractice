@@ -2,6 +2,10 @@ package Config;
 
 import Beans.EventType;
 import Loggers.EventLogger;
+import Loggers.CacheFileLogger;
+
+
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -13,6 +17,7 @@ import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 @Configuration
 public class LoggerConfig {
 
@@ -21,13 +26,13 @@ public class LoggerConfig {
     public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
         return new PropertySourcesPlaceholderConfigurer();
     }
-    @Resource(name = "Loggers.ConsoleEventLogger")
+    @Resource(name = "ConsoleEventLogger")
     private EventLogger consoleEventLogger;
     @Resource(name = "FileEventLogger")
     private  EventLogger fileEventLogger;
     @Resource(name = "CacheFileLogger")
     private EventLogger CacheLogger;
-    @Resource(name = "CombinedEventLogger")
+    @Resource(name = "Loggers/CombinedEventLogger")
     private EventLogger combinedEventLogger;
 
 

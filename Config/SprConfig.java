@@ -1,15 +1,18 @@
 package Config;
 
 import Beans.Client;
-import org.omg.CORBA.Environment;
+
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+
 import java.text.DateFormat;
 import java.util.Date;
 
+@SuppressWarnings("ALL")
 @Configuration
 @PropertySource("client.properties")
 public class SprConfig {
@@ -25,7 +28,7 @@ public class SprConfig {
     }
     @Bean public Client client(){
         Client client = new Client();
-        ((Client) client).setID(environment.getRequiredProperty("id"));
+        ((Client) client).setID(Integer.parseInt(environment.getRequiredProperty("id")));
         ((Client) client).setGreeting(environment.getRequiredProperty("greeting"));
         ((Client) client).setName(environment.getRequiredProperty("name"));
         return client;
